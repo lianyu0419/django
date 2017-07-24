@@ -1,0 +1,27 @@
+<div class="footer">
+	<hr />
+    <div class="row marketing">
+	    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+
+		{% for footer in footers %}
+	    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+	    	{% for item in footer %}
+	    		{% if forloop.first %}
+	       		<div class="row"><strong>{{item.name}}</strong></div>
+	       		{% else %}
+	        	<div class="row"><a href="{{item.url}}">{{item.name}}</a></div>
+	        	{% endif %}
+	        {% endfor %}
+	    </div>
+	    {% endfor %}
+
+    </div>
+</div>
+
+
+<div style="display:none">
+	<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F422b67bf47a76039759126408d1b0d04' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+</div>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load navs %}
+{% load static %}
+{% load breadcrumbs %}
+
+
+
+{% block content %}
+
+<div class="row">
+	
+	<div class="col-xs-12 col-md-9">
+		
+		{% breadcrumbs breadcrumbs %}
+		
+        {% for message in messages %}
+	    <div class="{{message.tags}}" style="margin: 0 0 5px 0;">
+	        <button type="button" class="close" data-dismiss="alert">&times;</button>
+		    {{message}}
+		</div>
+		{% endfor %}
+		
+		
+		{% block notification_content %}
+		{% endblock%}
+	</div>
+	
+	<div class="col-xs-12 col-md-3">
+
+        {% nav_list current_nav settings.NOTIFICATION_NAVS %}
+        
+    </div>
+	
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,160 @@
+{% extends "auth_base.html" %}
+{% load static %}
+
+{% block head %}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+	<div class="row">
+		<div class="page-header" style="text-align:center">
+			<h1>comment docs</h1>
+		</div>
+	</div>
+
+
+	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		<ul class="list-group" id="menu" style="position:absolute;">
+  			<li class="list-group-item">
+  				<a href="#Introductions">1. Introductions</a>
+  			</li>
+  			<li class="list-group-item">
+  				<a href="#Installation">2. Installation</a>
+  			</li>
+  			<li class="list-group-item">
+  				<a href="#Configuration">3. Configuration</a>
+  			</li>
+  			<li class="list-group-item">
+  				<a href="#Instructions">4. Instructions </a>
+  			</li>
+  			<li class="list-group-item">
+  				<a href="#Global Settings">5. Global Settings </a>
+  			</li>
+            <li class="list-group-item">
+                <a href="#Example">6. Example</a>
+            </li>
+		</ul>
+	</div>
+
+
+	<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+		<div class="row" id="Introductions">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3>1. Introductions </h3></div>
+				<div class="panel-body">
+		   			<p>
+		   				<em style="margin-left: 25px;"><strong>comment</strong></em> 
+                            comment is a commenting system building on top of django. 
+		 			</p>
+		 		</div>
+			</div>
+		</div>
+
+
+		<div class="row" id="Installation">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3>2. Installation </h3></div>
+				<div class="panel-body">
+				    <h5>You should to copy the following apps into your project:</h5>
+				    <ul>
+				        <li><strong>comment</strong></li>
+				        <li><strong>acount</strong>
+				            <p>application acount is responsible for login and logout</p>
+				        </li>
+				        <li><strong>html5tags</strong>
+				            <p>html5tags provide basic style for comment form and pagination</p>
+				        </li>
+				        <li><strong>toollib</strong>
+				            <p>toollib is a common module for rendering template, pagination etc</p>
+				        </li>
+				        <li><strong>django_avatar</strong>
+				            <p>avatar should be installed for handling user avatars. invoke the following command:</p>
+				            <pre>easy_install django_avatar</pre>
+				        </li>
+				    </ul>
+				</div>
+			</div>
+		</div>
+
+        <div class="row" id="Configuration">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>3. Configuration </h3></div>
+                <div class="panel-body">
+                    <h5></h5>
+                    <ol>
+                        <li>
+                            <p>You should add the following to your <em><strong>settings.py</strong></em></p>
+                            <pre>INSTALLED_APPS += ('comment','acount','html5tags','toollib', 'avatar',)</pre>
+                        </li>
+                        <li>
+                            <p>You should add the following to your <em><strong>urls.py</strong></em></p>
+                            <pre>urlpatterns += patterns('',
+                          url(r'', include('comment.urls')),
+                          url(r'auth/', include('account.urls')),
+                          )</pre>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="Instructions">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>4. Instructions </h3></div>
+                <div class="panel-body">
+                    <h5></h5>
+                    <ol>
+                        <li>
+                            <p>you should use <em><strong>syncdb</strong></em> to install <strong>comment</strong>, <strong>account</strong> and <strong>avatar</strong> model before running.</p>
+                            <pre>python manage.py syncdb</pre>
+                        </li>
+                        <li>
+                            <p>Wherever you want to display comments for one object, first load the comments template tags:</p>
+                            <pre>{&#37; load comment_tags &#37;}</pre>
+                        </li>
+                        <li>
+                            <p>Then, use the comment_list tag to display comments:</p>
+                            <pre>{&#37; comments app_name model_name object_pk prefix pageno request  &#37;}</pre>
+                            <p><em><strong>object_pk</strong></em>: id of some object(e.g. article or blog entry) which is commented</p>
+                            <p><em><strong>model_name</strong></em>: the object's model name</p>
+                            <p><em><strong>app</strong></em>: the app which the object belongs to</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+		
+        <div class="row" id="Global Settings">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3>5. Global Settings </h3></div>
+                <div class="panel-body">
+                    <h5>There are a number of settings available to easily customize the comments that appear on the site. You can find them in file config.py. Listed below are</h5>
+                    <ol>
+                        <li>
+                            <pre>PAGE_SIZE = 10</pre>
+                            <p><em><strong>PAGE_SIZE</strong></em> is an integers displaying amount of comments each page. Defaults to 10</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+		
+		<div class="row" id="Example">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3>6. Example</h3></div>
+				<div class="panel-body">
+				    <p>&nbsp;&nbsp;&nbsp;<a target="_blank" href="#"><strong>点击查看实例</strong></a></p>
+		 		</div>
+			</div>
+		</div>
+		
+	
+	</div>
+</div>
+
+
+{% endblock %}
+
+{% block foot %}{% endblock %}
