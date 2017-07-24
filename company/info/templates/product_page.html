@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <table width="730" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+        <tr>
+          <td valign="top" background="{{STATIC_URL}}images/title_008.jpg" height="36" align="left" class="text1">{{ product_info.name }}</td>
+        </tr>
+        <tr>
+          <td valign="top" height="250" align="left" style="padding:10px 5px;">
+              {{ product_info.introduction }}
+          </td>
+        </tr>
+      </tbody></table>
+{% endblock content %}
